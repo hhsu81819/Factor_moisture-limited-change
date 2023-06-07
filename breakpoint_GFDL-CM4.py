@@ -257,11 +257,11 @@ for window in range(1, 10):
                     p6=0
                     for i in range(1 ,np.size(LE)+1):
                         if np.array(SM)[i-1]<p0:
-                            Y[i-1]=SM[i-1]-p0+p1
+                            Y[i-1]=p4*(SM[i-1]-p0)+p1
                         if np.array(SM)[i-1]>p0 and np.array(SM)[i-1]<p2:
                             Y[i-1]=p3-p5*(p2-SM[i-1])
                         if np.array(SM)[i-1]>p2:
-                            Y[i-1]=p3+SM[i-1]-p2
+                            Y[i-1]=p3+(SM[i-1]-p2)*p6
                     RSS_[0,4,lat-1,lon-1]=np.sum(np.square(LE-Y))
                     dof=DOF_SM_[0,lat-1,lon-1]
                     BIC_[0,4,lat-1,lon-1]=len(SM)*np.log(RSS_[0,4,lat-1,lon-1]/len(SM))+6*np.log(len(SM))
